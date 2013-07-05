@@ -53,7 +53,11 @@ module Echonest
     def get(endpoint, options = {})
       query_string = ""
       options.each do |key, value|
-        query_string << "#{ key }=#{ value }&"
+        if value.kind_of?(Array)
+          value.each { |array_value| query_string << "#{ key }=#{ array_value }&"}
+        else
+          query_string << "#{ key }=#{ value }&"
+        end
       end
       #puts "#{ Base.base_uri }#{ endpoint }?api_key=#{ @api_key }&format=json&#{ query_string }"
       response = HTTParty.get(URI.escape("#{ Base.base_uri }#{ endpoint }?api_key=#{ @api_key }&format=json&#{ query_string }"))
