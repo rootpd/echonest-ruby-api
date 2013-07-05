@@ -64,7 +64,7 @@ module Echonest
       json = MultiJson.load(response.body, symbolize_keys: true)
       response_code = json[:response][:status][:code]
 
-      response_code.eql?(0) ? json[:response] : raise(Echonest::Error.new(response_code), "Error code #{ response_code }")
+      response_code.eql?(0) ? json[:response] : raise(Echonest::Error.new(response_code), "Echonest error ##{response_code}: #{ json[:response][:status][:message] }...")
     end
 
     # Cross-platform way of finding an executable in the $PATH.
