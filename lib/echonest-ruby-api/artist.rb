@@ -16,6 +16,7 @@ module Echonest
       @name = name
       @api_key = api_key
       @foreign_ids = ForeignId.parse_array(foreign_ids) if foreign_ids
+      @buckets = nil
     end
 
     def biographies(options = { results: 1 })
@@ -58,7 +59,7 @@ module Echonest
     end
 
     def search(options = {})
-      options = {name: @name, bucket: @buckets}.merge(options).delete_if{ |k,v| v.nil? }
+      options = {name: @name, bucket: @buckets}.merge(options).delete_if{ |_,v| v.nil? }
       artists = []
       get_response(options)[:artists].each do |a|
         artists << Artist.new(@api_key, a[:name], a[:foreign_ids])
@@ -75,7 +76,7 @@ module Echonest
     end
 
     def profile(options = {})
-      options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |k,v| v.nil? }
+      options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |_,v| v.nil? }
       artist_data = get_response(options)[:artist]
 
       artist = Artist.new(@api_key, artist_data[:name], artist_data[:foreign_ids], artist_data[:id])
@@ -85,14 +86,13 @@ module Echonest
           artist.instance_variable_set("@#{bucket}", eval("artist_data[:'#{bucket}']"))
           artist.class.__send__(:attr_accessor, "#{bucket}")
         end
-
-      end
+      end unless @buckets.nil?
 
       artist
     end
 
     def terms(options = {})
-      options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |k,v| v.nil? }
+      options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |_,v| v.nil? }
       get_response(options)[:terms]
     end
 

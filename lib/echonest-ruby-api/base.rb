@@ -11,6 +11,7 @@ module Echonest
     end
 
     def get_response(options = {})
+      options = options.delete_if{ |_,v| v.nil? }
       get(endpoint, options)
     end
 

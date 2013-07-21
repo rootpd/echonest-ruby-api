@@ -44,8 +44,13 @@ Then you have access to a bunch of methods:
     artist.hotttnesss
     artist.images
     artist.songs
+    artist.profile
+
+Artist methods support requesting buckets according to [documentation](http://developer.echonest.com/docs/v4/artist.html). Buckets are added as array to request object:
+
+    artist.buckets = %w[artist_location biographies blogs years_active id:7digital-US id:spotify-WW id:musicbrainz]
     
-*Exact response are specified in the RDoc  but the method names try to be as self-explanatory as possible.*
+*Exact response are specified in the RDoc, but the method names try to be as self-explanatory as possible.*
 
 ## Song
 
@@ -132,3 +137,4 @@ Testing is done using RSpec. Just run `guard` in the root directory and it'll ru
 * jordanpoulton
 * makersacademy
 * deadroxy
+* rootpd
