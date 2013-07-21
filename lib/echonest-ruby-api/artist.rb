@@ -77,8 +77,19 @@ module Echonest
     def profile(options = {})
       options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |k,v| v.nil? }
       artist_data = get_response(options)[:artist]
-      Artist.new(@api_key, artist_data[:name], artist_data[:foreign_ids], artist_data[:id])
-    end 
+
+      artist = Artist.new(@api_key, artist_data[:name], artist_data[:foreign_ids], artist_data[:id])
+
+      @buckets.each do |bucket|
+        unless bucket.include? 'id:' then
+          artist.instance_variable_set("@#{bucket}", eval("artist_data[:'#{bucket}']"))
+          artist.class.__send__(:attr_accessor, "#{bucket}")
+        end
+
+      end
+
+      artist
+    end
 
     def terms(options = {})
       options = {name: @name, id: @id, bucket: @buckets}.merge(options).delete_if{ |k,v| v.nil? }
