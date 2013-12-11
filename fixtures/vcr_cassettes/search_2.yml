@@ -13,42 +13,46 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 23 Feb 2013 13:09:28 GMT
+      - Sun, 21 Jul 2013 18:35:14 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Connection:
-      - keep-alive
+      Content-Length:
+      - '616'
       Vary:
       - Accept-Encoding
       X-Request-Id:
-      - z1OH+XS4QNCIq1PB0u1HpA
+      - ueAa917VRkeDzU+syjzrCg
       Etag:
-      - ! '"738c6d202224e12d6640137838d49cd249f1cb89"'
+      - '"c28e1ad1dc46c88debd23c3a107cfe40cf7be248"'
       X-Worker-Node:
-      - 5f1b3:30033
-      Content-Length:
-      - '559'
+      - 746e1:19893
       X-Ratelimit-Remaining:
-      - '20'
+      - '9'
       Server:
-      - TornadoServer/2.4.1
+      - TornadoServer/3.0.1
       X-Ratelimit-Limit:
       - '20'
       Cache-Control:
       - max-age=86400
       Access-Control-Allow-Origin:
-      - ! '*'
+      - '*'
       X-Ratelimit-Used:
-      - '1'
+      - '11'
+      Connection:
+      - Keep-alive
+      Keep-Alive:
+      - timeout=15, max=100
+      Via:
+      - 1.1 ID-0000627501223666 uproxy-2
     body:
-      encoding: US-ASCII
-      string: ! '{"response": {"status": {"version": "4.2", "code": 0, "message":
-        "Success"}, "artists": [{"foreign_ids": [{"catalog": "musicbrainz", "foreign_id":
-        "musicbrainz:artist:6fe07aa5-fec0-4eca-a456-f29bff451b04"}], "id": "AR633SY1187B9AC3B9",
-        "name": "Weezer"}, {"id": "ARHVIPZ122CC3B2537", "name": "Weezer Tribute"},
-        {"id": "ARRLJLF13221695F30", "name": "Weezer, Hayley Williams"}, {"id": "ARGGYKM13365906CDC",
-        "name": "Weezer/Hayley Williams"}, {"id": "ARWHDKF12AF7D9BEBF", "name": "Grease
-        Weezer"}, {"id": "ARIVGRW134198DDE27", "name": "Matt Sharp (of Weezer"}]}}'
+      encoding: UTF-8
+      string: '{"response": {"status": {"version": "4.2", "code": 0, "message": "Success"},
+        "artists": [{"foreign_ids": [{"catalog": "musicbrainz", "foreign_id": "musicbrainz:artist:6fe07aa5-fec0-4eca-a456-f29bff451b04"}],
+        "id": "AR633SY1187B9AC3B9", "name": "Weezer"}, {"id": "ARHVIPZ122CC3B2537",
+        "name": "Weezer Tribute"}, {"id": "ARIAWPS13C1C298E1A", "name": "Weezer Rascal"},
+        {"id": "ARFLKGR13C1C2A6C75", "name": "Weezer Rasca"}, {"id": "ARRLJLF13221695F30",
+        "name": "Weezer, Hayley Williams"}, {"id": "ARGGYKM13365906CDC", "name": "Weezer/Hayley
+        Williams"}, {"id": "ARTHPBI13A23CD07FD", "name": "Weezer / Hayley Williams"}]}}'
     http_version: 
-  recorded_at: Sat, 23 Feb 2013 13:09:36 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Sun, 21 Jul 2013 18:35:14 GMT
+recorded_with: VCR 2.5.0

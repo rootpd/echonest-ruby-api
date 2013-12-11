@@ -13,40 +13,44 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 22 Feb 2013 20:57:27 GMT
+      - Sun, 21 Jul 2013 18:35:11 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Connection:
-      - keep-alive
+      Content-Length:
+      - '390'
       Vary:
       - Accept-Encoding
       X-Request-Id:
-      - S0DxrVdbT2O0D5NiewljIg
+      - ehLKBT0NRdeKtQuJYqRG3g
       Etag:
-      - ! '"20406ebd7c4f93f2ed24d9566bbad8568af1c7e7"'
+      - '"20406ebd7c4f93f2ed24d9566bbad8568af1c7e7"'
       X-Worker-Node:
-      - aadeb:27235
-      Content-Length:
-      - '390'
+      - d1c7d:18554
       X-Ratelimit-Remaining:
-      - '20'
+      - '18'
       Server:
-      - TornadoServer/2.4.1
+      - TornadoServer/3.0.1
       X-Ratelimit-Limit:
       - '20'
       Cache-Control:
       - max-age=86400
       Access-Control-Allow-Origin:
-      - ! '*'
+      - '*'
       X-Ratelimit-Used:
-      - '1'
+      - '2'
+      Connection:
+      - Keep-alive
+      Keep-Alive:
+      - timeout=15, max=100
+      Via:
+      - 1.1 ID-0000627501223666 uproxy-2
     body:
-      encoding: US-ASCII
-      string: ! '{"response": {"status": {"version": "4.2", "code": 0, "message":
-        "Success"}, "start": 0, "total": 13, "biographies": [{"text": "FOLLOW US MORE
-        VIDEOS", "site": "myspace", "url": "http://www.myspace.com/weezer#biography",
-        "license": {"type": "unknown", "attribution": "n/a", "attribution-url": "http://www.myspace.com/weezer#biography",
+      encoding: UTF-8
+      string: '{"response": {"status": {"version": "4.2", "code": 0, "message": "Success"},
+        "start": 0, "total": 13, "biographies": [{"text": "FOLLOW US MORE VIDEOS",
+        "site": "myspace", "url": "http://www.myspace.com/weezer#biography", "license":
+        {"type": "unknown", "attribution": "n/a", "attribution-url": "http://www.myspace.com/weezer#biography",
         "url": "n/a", "version": "n/a"}, "truncated": true}]}}'
     http_version: 
-  recorded_at: Fri, 22 Feb 2013 20:57:32 GMT
-recorded_with: VCR 2.4.0
+  recorded_at: Sun, 21 Jul 2013 18:35:11 GMT
+recorded_with: VCR 2.5.0
