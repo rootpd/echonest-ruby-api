@@ -14,7 +14,9 @@
 
 In your Gemfile:
 
-    gem 'echonest-ruby-api'
+```ruby
+gem 'echonest-ruby-api'
+```
     
 and then `bundle install`
 
@@ -27,16 +29,21 @@ Or install locally:
 
 Require the gem in your file:
 
-    require 'echonest-ruby-api'
+```ruby
+require 'echonest-ruby-api'
+```
 
 ## Artist
 
 Create an instance of an object
 
-    artist = Echonest::Artist.new('YOUR-API-KEY', 'Weezer')
+```ruby
+artist = Echonest::Artist.new('YOUR-API-KEY', 'Weezer')
+```
 
 Then you have access to a bunch of methods:
 
+```ruby
     artist.name
     artist.biographies
     artist.blogs
@@ -45,10 +52,13 @@ Then you have access to a bunch of methods:
     artist.images
     artist.songs
     artist.profile
+```
 
 Artist methods support requesting buckets according to [documentation](http://developer.echonest.com/docs/v4/artist.html). Buckets are added as array to request object:
 
+```ruby
     artist.buckets = %w[artist_location biographies blogs years_active id:7digital-US id:spotify-WW id:musicbrainz]
+```
     
 *Exact response are specified in the RDoc, but the method names try to be as self-explanatory as possible.*
 
@@ -56,13 +66,17 @@ Artist methods support requesting buckets according to [documentation](http://de
 
 Create an instance of the Song module.
 
-    song = Echonest::Song.new('YOUR-API-KEY')
+```ruby
+song = Echonest::Song.new('YOUR-API-KEY')
+```
 
 Then you have access to the song/search endpoint:
 *(this is where it gets clever)*
 
-    params = { mood: "sad^.5", results: 10, min_tempo: 130, max_tempo: 150 }
-    song.search(params)
+```ruby
+params = { mood: "sad^.5", results: 10, min_tempo: 130, max_tempo: 150 }
+song.search(params)
+```
 
 See the full list of params [here](http://developer.echonest.com/docs/v4/song.html#search)
 
@@ -95,31 +109,35 @@ This should then allow you to use the `echoprint-codegen` command at the command
 
 Then just use this method call:
 
-    song = Echonest::Song.new('YOUR-API-KEY')
-    code = song.echoprint_code('path/to/audio/file')
-    puts code.identify(code)
+```ruby
+song = Echonest::Song.new('YOUR-API-KEY')
+code = song.echoprint_code('path/to/audio/file')
+puts song.identify(code)
+```
 
 If there's a positive match, it'll return something like this:
 
-    {
-      "response": {
-            "status": {
-            "code": 0,
-            "message": "Success",
-            "version": "4.2"
-          },
-          "songs": [
-          {
-            "title": "Billie Jean",
-            "artist_name": "Michael Jackson",
-            "artist_id": "ARXPPEY1187FB51DF4",
-            "score": 49,
-            "message": "OK (match type 5)",
-            "id": "SOKHYNL12A8C142FC7"
-          }
-        ]
+```ruby
+{
+  "response": {
+        "status": {
+        "code": 0,
+        "message": "Success",
+        "version": "4.2"
+      },
+      "songs": [
+      {
+        "title": "Billie Jean",
+        "artist_name": "Michael Jackson",
+        "artist_id": "ARXPPEY1187FB51DF4",
+        "score": 49,
+        "message": "OK (match type 5)",
+        "id": "SOKHYNL12A8C142FC7"
       }
-    }
+    ]
+  }
+}
+```
 
 Checkout `spec/song_spec.rb` for an example code to test it out. 
 
@@ -138,3 +156,8 @@ Testing is done using RSpec. Just run `guard` in the root directory and it'll ru
 * makersacademy
 * deadroxy
 * rootpd
+* [Devon Blandin](https://github.com/dblandin)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/maxehmookau/echonest-ruby-api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+

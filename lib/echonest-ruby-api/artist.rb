@@ -40,8 +40,8 @@ module Echonest
       response[entity_name.to_sym][__method__.to_sym]
     end
 
-    def hotttnesss
-      response = get_response(name: @name, bucket: @buckets)
+    def hotttnesss(options = {})
+      response = get_response(name: @name, bucket: @buckets, type: options.fetch(:type, 'overall'))
       response[entity_name.to_sym][__method__.to_sym]
     end
 
@@ -62,7 +62,7 @@ module Echonest
       options = {name: @name, bucket: @buckets}.merge(options).delete_if{ |_,v| v.nil? }
       artists = []
       get_response(options)[:artists].each do |a|
-        artists << Artist.new(@api_key, a[:name], a[:foreign_ids])
+        artists << Artist.new(@api_key, a[:name], a[:foreign_ids], a[:id])
       end
       artists
     end

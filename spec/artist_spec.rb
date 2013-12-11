@@ -87,6 +87,9 @@ describe Echonest::Artist do
       VCR.use_cassette('hotttnesss') do
         create_valid_artist
         @a.hotttnesss.should be_a Float
+        @a.hotttnesss(type: 'social').should be_a Float
+        @a.hotttnesss(type: 'reviews').should be_a Float
+        @a.hotttnesss(type: 'mainstream').should be_a Float
       end
     end
 
@@ -156,6 +159,15 @@ describe Echonest::Artist do
       end
     end
 
+    it 'should fill in id of each returned artist' do
+      VCR.use_cassette('search') do
+        create_valid_artist
+        @a.search.each do |k|
+          k.id.should_not be_nil
+        end
+      end
+    end
+
     it 'should search the specified bucket' do
       VCR.use_cassette('search_2') do
         create_valid_artist
@@ -221,6 +233,18 @@ describe Echonest::Artist do
       VCR.use_cassette('terms') do
         create_valid_artist_with_id
         @a.terms.map{|t| t[:name]}.should include("modern rock")
+      end
+    end
+
+    it 'should work even when artist has both name and id' do
+      # If we try, echonest will respond with error:
+      # 'limit - Only one of \"name\" or \"id\" is allowed'
+      VCR.use_cassette('terms') do
+        create_valid_artist_with_id
+        @a.name = "Weezer"
+        expect {
+          @a.terms
+        }.to_not raise_error
       end
     end
 
