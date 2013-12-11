@@ -6,6 +6,8 @@ module Echonest
   
   class Playlist < Echonest::Base
 
+    attr_accessor :session_id
+
     def initialize(api_key, artist) 
       @api_key = api_key
       @artist = artist
